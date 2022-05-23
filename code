@@ -1,0 +1,39 @@
+import random
+lottery_numbers=[]
+for i in range (0,7):
+    number=random.randint(1,30)
+    while number in lottery_numbers:
+        number=random.randint(1,30)
+
+    lottery_numbers.append(number)
+
+user_numbers=[]
+for i in range (0,7):
+    number=(int(input("Please enter a number between 1 and 10: ")))
+    while (number in user_numbers or number<1 or number>30):
+        print("Invalid number, please try again")
+    user_numbers.append(number)
+
+lottery_numbers.sort()
+print("Lottery numbers are: ", lottery_numbers)
+
+print("Your selection: ", user_numbers)
+
+counter=0
+for number in user_numbers:
+    if number in lottery_numbers:
+        counter+=1
+
+print("You guessed " +str(counter)+" number(s) correctly.")
+
+winnings=counter
+if counter ==3:
+    print(" You won £20")
+if counter==4:
+    print("You won £40")
+if counter==5:
+    print("You won £100")
+if counter==6:
+    print("You won £10000")
+if counter==7:
+    print("You won £1000000")
